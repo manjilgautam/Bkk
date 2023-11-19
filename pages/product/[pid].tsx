@@ -1,6 +1,5 @@
 import { GetServerSideProps } from 'next'
 
-import { useState } from 'react';
 import Footer from '../../components/footer';
 import Layout from '../../layouts/Main';
 import Breadcrumb from '../../components/breadcrumb';
@@ -29,7 +28,6 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 }
 
 const Product = ({ product }: ProductPageType) => {
-  const [showBlock, setShowBlock] = useState('description');
 
   return (
     <Layout>

@@ -1,10 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
-import { useSelector } from 'react-redux';
 import useOnClickOutside from 'use-onclickoutside';
 import Logo from '../../assets/icons/logo';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { RootState } from 'store';
 
 type HeaderType = {
   isErrorPage?: Boolean;
@@ -12,14 +10,13 @@ type HeaderType = {
 
 const Header = ({ isErrorPage }: HeaderType) => {
   const router = useRouter();
-  const { cartItems } = useSelector((state: RootState)  => state.cart);
   const arrayPaths = ['/'];  
 
   const [onTop, setOnTop] = useState(( !arrayPaths.includes(router.pathname) || isErrorPage ) ? false : true);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [searchOpen, setSearchOpen] = useState(false);
+  // const [ setSearchOpen] = useState(false);
   const navRef = useRef(null);
-  const searchRef = useRef(null);
+  // const searchRef = useRef(null);
 
   const headerClass = () => {
     if(window.pageYOffset === 0) {
@@ -44,13 +41,13 @@ const Header = ({ isErrorPage }: HeaderType) => {
     setMenuOpen(false);
   }
 
-  const closeSearch = () => {
-    setSearchOpen(false);
-  }
+  // const closeSearch = () => {
+  //   setSearchOpen(false);
+  // }
 
   // on click outside
   useOnClickOutside(navRef, closeMenu);
-  useOnClickOutside(searchRef, closeSearch);
+  // useOnClickOutside(searchRef, closeSearch);
 
   return(
     <header className={`site-header ${!onTop ? 'site-header--fixed' : ''}`}>
